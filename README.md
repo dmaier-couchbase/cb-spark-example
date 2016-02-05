@@ -11,6 +11,7 @@ These are a few Spark examples for demoing Couchbase with Spark.
 
 ![Spark Architecture](https://spark.apache.org/docs/1.1.0/img/cluster-overview.png)
 
+https://spark.apache.org/docs/1.1.0/img/cluster-overview.png
 
 ## How to use
 
