@@ -1,6 +1,6 @@
 # Couchbase Spark Example
 
-Apache Spark is used for distributed computation. The data input is expressed as R(esilient) D(istributed) D(ata) sets. An RDD is describing which data should be processed (parallizing collection, retrieving from several sources). The actual data is then processed in RAM by multiple Spark nodes in parallel. Transformation sequences and actions are describing how the RDD should be processed. Spark is able to recompute on failure (resilency). There are 3 main components:
+Apache Spark is used for distributed computation. The data input is expressed as R(esilient) D(istributed) D(ata) sets. An RDD is describing which data should be processed (parallizing collection, retrieving from several sources). The actual data is then processed in RAM by multiple Spark nodes in parallel. Transformation sequences and actions are describing how the RDD-s should be processed. Spark is able to recompute on failure (resilency). There are 3 main components:
 
 * Spark Core: Handle RDD-s from several sources (and to several targets)
 * Spark SQL: Handle data frames (RDD-s with a schema) whereby retrieving e.g. from database system
