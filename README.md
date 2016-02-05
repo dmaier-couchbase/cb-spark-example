@@ -52,7 +52,7 @@ export SPARK_CLASSPATH_EXT=/home/couchbase/opt/spark-1.6.0-bin-hadoop2.6/ext
 export SPARK_CLASSPATH=$(find "$SPARK_CLASSPATH_EXT" -name '*.jar' | xargs echo | tr ' ' ':')
 ```
 
-Optionally it would be possible to use the 'spark-submit' tool in order to submit your application. In this case you can specify a the dependencies via the '--packages' argument.
+Optionally it would be possible to use the 'spark-submit' tool in order to submit your application. In this case you can specify a the dependencies via the '--packages' argument or you could submit a 'fat' jar.
 
 
 ### Couchbase configuration
