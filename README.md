@@ -1,21 +1,26 @@
 # Couchbase Spark Example
 
-These are a few Spark examples for demoing Couchbase with Spark.
+Apache Spark is used for distributed computation. The data input is expressed as R(esilient) D(istributed) D(ata) sets. An RDD is describing which data should be processed (parallizing collection, retrieving from several sources). The actual data is then processed in RAM by multiple Spark nodes in parallel. Transformation sequences and actions are describing how the RDD should be processed. Spark is able to recompute on failure (resilency). There are 3 main components:
+
+* Spark Core: Handle RDD-s from several sources (and to several targets)
+* Spark SQL: Handle data frames (RDD-s with a schema) whereby retrieving e.g. from database system
+* Spark Streaming: Handle D(iscrete)Streams (RDD-s retrieven step by step as micro batches)
+
+This repository contains a few Spark examples for demoing Couchbase with Spark. The examples are written in Java. Spark also supports Scala and Python.
 
 ## Archtiecture
 
+It's expected that you have a Spark cluster up and running. I used the standalone cluster.
+
 * Driver Program: Creates the Spark context, declares the trasnformation and actions on RDD-s of data and sumbits them to the Master 
 * Cluster Manager: Aquires executors on worker nodes in the cluster.
-* Worker Nodes
-  * Executors: Execute tasks and return results to the driver
+* Workers and their Executors: Execute tasks and return results to the driver
 
 ![Spark Architecture](https://spark.apache.org/docs/1.1.0/img/cluster-overview.png)
 
 https://spark.apache.org/docs/1.1.0/img/cluster-overview.png
 
 ## How to use
-
-It's expected that you have a Spark cluster up and running. I used the standalone cluster with the default configuration.
 
 ### Driver configuration
 
