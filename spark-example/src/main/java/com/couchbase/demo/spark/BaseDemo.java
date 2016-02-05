@@ -20,8 +20,6 @@ public abstract class BaseDemo implements Demo {
     protected SparkConf cfg;
     protected JavaSparkContext ctx;
     
-    
-    
     @Override
     public void init() {
       
@@ -34,10 +32,16 @@ public abstract class BaseDemo implements Demo {
     @Override
     public abstract void run() throws Exception;
 
+    
+    
     @Override
-    public String getName() {
+    public void shutdown() {
         
-        return "BaseDemo";
+        this.ctx.close();
     }
+    
+    
+    @Override
+    public abstract String getName();
     
 }

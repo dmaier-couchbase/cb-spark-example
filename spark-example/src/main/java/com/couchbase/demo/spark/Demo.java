@@ -26,6 +26,12 @@ public interface Demo {
     
     
     /**
+     * Shut down the demo
+     */
+    public void shutdown();
+    
+    
+    /**
      * The name of the demo
      * 
      * @return 
