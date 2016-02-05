@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.couchbase.demo.spark;
+package com.couchbase.demo.spark.base;
 
+import com.couchbase.demo.spark.Config;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaSparkContext;
 
@@ -14,8 +15,6 @@ import org.apache.spark.api.java.JavaSparkContext;
  */
 public abstract class BaseDemo implements Demo {
 
-    //Environment
-    public final static String SPARK_CLUSTER = "spark://192.168.7.191:7077"; 
     
     protected SparkConf cfg;
     protected JavaSparkContext ctx;
@@ -23,8 +22,8 @@ public abstract class BaseDemo implements Demo {
     @Override
     public void init() {
       
-        cfg = new SparkConf().setMaster(SPARK_CLUSTER).setAppName(getName())
-                .set("spark.driver.host", "192.168.7.1");
+        cfg = new SparkConf().setMaster(Config.SPARK_CLUSTER).setAppName(getName())
+                .set("spark.driver.host", Config.SPARK_DRIVER_HOST);
         
         ctx = new JavaSparkContext(cfg);
     }

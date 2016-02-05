@@ -1,11 +1,13 @@
 package com.couchbase.demo.spark;
 
+import com.couchbase.demo.spark.helper.Helper;
+import com.couchbase.demo.spark.base.BaseDemo;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.spark.api.java.JavaRDD;
 
 /**
- * Just using Spark without any relationship to Couchbase
+ * Just using Spark on a CSV file
  * 
  * 
  * @author David Maier <david.maier at couchbase.com>
