@@ -1,7 +1,6 @@
-package com.couchbase.demo.spark;
+package com.couchbase.demo.spark.java;
 
 import com.couchbase.client.java.query.N1qlQuery;
-import com.couchbase.demo.spark.base.CouchbaseBaseDemo;
 import com.couchbase.spark.rdd.CouchbaseQueryRow;
 import java.util.List;
 import org.apache.spark.api.java.JavaRDD;
@@ -14,7 +13,7 @@ public class CouchbaseN1QLDemo extends CouchbaseBaseDemo {
 
     @Override
     public void run() throws Exception {
-        
+                
        JavaRDD<CouchbaseQueryRow> rdd = csc.couchbaseQuery(N1qlQuery.simple("SELECT * FROM `travel-sample` LIMIT 10"));
        
        List<CouchbaseQueryRow> rows = rdd.collect();

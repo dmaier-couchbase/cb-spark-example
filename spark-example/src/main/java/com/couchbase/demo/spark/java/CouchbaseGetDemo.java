@@ -1,8 +1,7 @@
 
-package com.couchbase.demo.spark;
+package com.couchbase.demo.spark.java;
 
 import com.couchbase.client.java.document.JsonDocument;
-import com.couchbase.demo.spark.base.CouchbaseBaseDemo;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.spark.api.java.JavaRDD;
@@ -21,7 +20,7 @@ public class CouchbaseGetDemo extends CouchbaseBaseDemo {
         
         JavaRDD<JsonDocument> rdd = csc.couchbaseGet(Arrays.asList("airline_10226", "airline_10748"));
         List<JsonDocument> docs = rdd.collect();
-        
+               
         for (JsonDocument doc : docs) {
             
             System.out.println(doc.toString());

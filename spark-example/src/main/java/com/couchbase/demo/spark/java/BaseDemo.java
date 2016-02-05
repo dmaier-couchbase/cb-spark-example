@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.couchbase.demo.spark.base;
+package com.couchbase.demo.spark.java;
 
 import com.couchbase.demo.spark.Config;
 import org.apache.spark.SparkConf;
@@ -28,10 +28,19 @@ public abstract class BaseDemo implements Demo {
         ctx = new JavaSparkContext(cfg);
     }
 
+    
+    public void demo() throws Exception {
+        
+        init();
+        run();
+        shutdown();
+                
+    }
+    
+    
     @Override
     public abstract void run() throws Exception;
 
-    
     
     @Override
     public void shutdown() {

@@ -1,4 +1,4 @@
-package com.couchbase.demo.spark.base;
+package com.couchbase.demo.spark.java;
 
 import com.couchbase.demo.spark.Config;
 import com.couchbase.spark.japi.CouchbaseSparkContext;
@@ -16,7 +16,7 @@ public abstract class CouchbaseBaseDemo extends BaseDemo {
      * The Couchbase spark context
      */
     protected CouchbaseSparkContext csc;
-
+    
     @Override
     public void init() {
        
@@ -25,7 +25,6 @@ public abstract class CouchbaseBaseDemo extends BaseDemo {
                 .set(Config.CB_BUCKET, Config.CB_PWD)
                 .set("com.couchbase.nodes", Config.CB_NODES);
                 
-        
         ctx = new JavaSparkContext(cfg);
         this.csc = couchbaseContext(ctx);
         

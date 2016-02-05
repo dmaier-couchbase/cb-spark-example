@@ -1,7 +1,5 @@
-package com.couchbase.demo.spark;
+package com.couchbase.demo.spark.java;
 
-import com.couchbase.demo.spark.helper.Helper;
-import com.couchbase.demo.spark.base.BaseDemo;
 import java.util.Arrays;
 import java.util.List;
 import org.apache.spark.api.java.JavaRDD;

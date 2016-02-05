@@ -1,4 +1,4 @@
-package com.couchbase.demo.spark.helper;
+package com.couchbase.demo.spark.java;
 
 import com.google.common.io.Files;
 import io.netty.handler.codec.http.multipart.InterfaceHttpData;

@@ -1,5 +1,10 @@
 package com.couchbase.demo.spark;
 
+import com.couchbase.demo.spark.java.CouchbaseGetDemo;
+import com.couchbase.demo.spark.java.CouchbaseN1QLDemo;
+import com.couchbase.demo.spark.java.SimpleDemo;
+import com.couchbase.demo.spark.scala.CouchbaseSparkSQLDemo;
+
 
 /**
  * Entry point of the application
@@ -14,19 +19,16 @@ public class Main {
         
         
         SimpleDemo simple = new SimpleDemo();
-        simple.init();
-        simple.run();
-        simple.shutdown();
+        simple.demo();
         
         CouchbaseGetDemo get = new CouchbaseGetDemo();
-        get.init();
-        get.run();
-        get.shutdown();
+        get.demo();
         
         CouchbaseN1QLDemo n1ql = new CouchbaseN1QLDemo();
-        n1ql.init();
-        n1ql.run();
-        n1ql.shutdown();
+        n1ql.demo();
+        
+        CouchbaseSparkSQLDemo sqlDemo = new CouchbaseSparkSQLDemo();
+        sqlDemo.demo();
         
     }
 }
