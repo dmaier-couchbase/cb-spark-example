@@ -7,7 +7,10 @@ These are a few Spark examples for demoing Couchbase with Spark.
 * Driver Program: Creates the Spark context, declares the trasnformation and actions on RDD-s of data and sumbits them to the Master 
 * Cluster Manager: Aquires executors on worker nodes in the cluster.
 * Worker Nodes
-  * Executors: Execute tasks and return results to Driver
+  * Executors: Execute tasks and return results to the driver
+
+![Spark Architecture](https://spark.apache.org/docs/1.1.0/img/cluster-overview.png)
+
 
 ## How to use
 
