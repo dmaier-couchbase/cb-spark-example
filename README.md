@@ -123,3 +123,66 @@ public static final String CB_PWD = "";
         }
     }
 ```
+
+* Scala: Create context
+
+```Scala
+def init(name : String) : (SparkContext, SQLContext, StreamingContext) = {
+    
+    //The config to use
+    val cfg = new SparkConf()
+              .setAppName(name)
+              .setMaster(Config.SPARK_CLUSTER)
+              .set("spark.driver.host", Config.SPARK_DRIVER_HOST)
+              .set("com.couchbase.nodes", Config.CB_NODES)
+              .set(Config.CB_BUCKET, Config.CB_PWD)
+    
+    val ctx = new SparkContext(cfg)
+    val sql = new SQLContext(ctx)
+    val ssc = new StreamingContext(ctx,  Seconds(1))
+
+    return (ctx, sql, ssc);
+  }
+```
+
+* Scala: SparkSQL
+
+```Scala
+def demo() {
+    
+    val ctxs = Contexts.init("CouchbaseSparkSQLDemo")
+    val sql = ctxs._2
+    
+    val airline = sql.read.couchbase(schemaFilter = EqualTo("type", "airline"))
+     
+    airline
+      .select("name", "callsign")
+      .sort(airline("callsign").desc)
+      .show(10)
+    
+    Contexts.shutdown(ctxs._1)
+  }
+```
+
+* Scala: Spark Streaming
+
+```Scala
+def demo() {
+    
+    val ctxs = Contexts.init("CouchbaseStreamDemo")
+    val ssc = ctxs._3
+   
+    ssc
+      .couchbaseStream()
+      .print()
+ 
+    ssc
+      .start()
+      
+    ssc
+      .awaitTermination()
+    
+    Contexts.shutdown(ctxs._1)
+    
+  }
+```
