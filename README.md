@@ -72,6 +72,54 @@ public static final String CB_PWD = "";
 
 ## Examples
 
-TODO
+* Java: Create context
 
+```Java
+@Override
+    public void init() {
+       
+        cfg = new SparkConf().setMaster(Config.SPARK_CLUSTER).setAppName(getName())
+                .set("spark.driver.host", Config.SPARK_DRIVER_HOST)
+                .set(Config.CB_BUCKET, Config.CB_PWD)
+                .set("com.couchbase.nodes", Config.CB_NODES);
+                
+        ctx = new JavaSparkContext(cfg);
+        this.csc = couchbaseContext(ctx);
+        
+    }
+```
 
+* Java: Peform get
+
+```Java
+@Override
+    public void run() throws Exception {
+        
+        //BTW: More useful if you process the data before you collect the results
+        
+        JavaRDD<JsonDocument> rdd = csc.couchbaseGet(Arrays.asList("airline_10226", "airline_10748"));
+        List<JsonDocument> docs = rdd.collect();
+               
+        for (JsonDocument doc : docs) {
+            
+            System.out.println(doc.toString());
+        }
+    }
+```
+
+* Java: N1QL query
+
+```Java
+@Override
+    public void run() throws Exception {
+                
+       JavaRDD<CouchbaseQueryRow> rdd = csc.couchbaseQuery(N1qlQuery.simple("SELECT * FROM `travel-sample` LIMIT 10"));
+       
+       List<CouchbaseQueryRow> rows = rdd.collect();
+       
+        for (CouchbaseQueryRow row : rows) {
+            
+            System.out.println(row.toString());
+        }
+    }
+```
