@@ -4,6 +4,7 @@ import com.couchbase.demo.spark.java.CouchbaseGetDemo;
 import com.couchbase.demo.spark.java.CouchbaseN1QLDemo;
 import com.couchbase.demo.spark.java.SimpleDemo;
 import com.couchbase.demo.spark.scala.CouchbaseSparkSQLDemo;
+import com.couchbase.demo.spark.scala.CouchbaseStreamDemo;
 
 
 /**
@@ -17,7 +18,6 @@ public class Main {
     
     public static void main(String[] args) throws Exception {
         
-        
         SimpleDemo simple = new SimpleDemo();
         simple.demo();
         
@@ -30,5 +30,10 @@ public class Main {
         CouchbaseSparkSQLDemo sqlDemo = new CouchbaseSparkSQLDemo();
         sqlDemo.demo();
         
+        //Enable DCP on the client side
+        System.setProperty("com.couchbase.dcpEnabled", "true");
+        
+        CouchbaseStreamDemo streamDemo = new CouchbaseStreamDemo();
+        streamDemo.demo();     
     }
 }
