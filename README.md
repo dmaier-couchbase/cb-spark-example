@@ -158,12 +158,22 @@ def demo() {
     .filter(d => d.content.getString("country").equals("United States"))
     .map(MyFuncs.printdoc)
     
-    println("count = " + rdd.count())
     
+    val count = rdd.count()
+    
+    println("count = " + count)
+    
+    Contexts.bucket(Config.CB_BUCKET_NAME, ctx).insert(
+      JsonDocument.create("count::us::airports", 
+                          JsonObject.create().put("count", count)
+      )
+    )
     
     Contexts.shutdown(ctx)
     
    }
+  
+}
 ```
 
 
