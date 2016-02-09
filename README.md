@@ -145,6 +145,28 @@ def init(name : String) : (SparkContext, SQLContext, StreamingContext) = {
   }
 ```
 
+* Scala: Get
+
+```Scala
+def demo() {
+     
+    val ctxs = Contexts.init("CouchbaseFilteredGetDemo")
+    val ctx = ctxs._1
+    
+    val rdd = ctx
+    .couchbaseGet[JsonDocument](Seq("airline_10226", "airline_10748", "airline_1437"))
+    .filter(d => d.content.getString("country").equals("United States"))
+    .map(MyFuncs.printdoc)
+    
+    println("count = " + rdd.count())
+    
+    
+    Contexts.shutdown(ctx)
+    
+   }
+```
+
+
 * Scala: SparkSQL
 
 ```Scala
